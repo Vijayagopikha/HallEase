@@ -109,8 +109,51 @@
         <button type="submit"><a href="#">Submit</a></button>
            
     </form>
+    <div id="confirmation" class="hidden">Booking Successful!</div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookingForm = document.getElementById('bookingForm');
+        const confirmationMsg = document.getElementById('confirmation');
 
+        bookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Get form data
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const eventName = document.getElementById('eventName').value;
+            const eventDate = document.getElementById('eventDate').value;
+            // Add logic to get other form fields
+
+            // Construct the table row HTML
+            const newRowHTML = `
+                <tr>
+                    <td>${eventDate}</td>
+                    <td>${eventName}</td>
+                    <td>Start Time</td>
+                    <td>End Time</td>
+                    <td>
+                        <button class="accept-btn">Accept</button>
+                        <button class="reject-btn">Reject</button>
+                    </td>
+                </tr>
+            `;
+
+            // Append the new row to the table body
+            const tableBody = document.querySelector('#bookingTable tbody');
+            tableBody.insertAdjacentHTML('beforeend', newRowHTML);
+
+            // Display confirmation message
+            confirmationMsg.classList.remove('hidden');
+            setTimeout(function() {
+                confirmationMsg.classList.add('hidden');
+            }, 5000);
+
+            // Reset form fields
+            bookingForm.reset();
+        });
+    });
+</script>
     
 </body>
 </html>
