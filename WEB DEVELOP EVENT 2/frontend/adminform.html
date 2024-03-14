@@ -67,7 +67,7 @@
                         <td>${booking.startTime}</td>
                         <td>${booking.endTime}</td>
                         <td>
-                            <button class="accept-btn">Accept</button>
+                            <button class="accept-btn" data-index="${index}">Accept</button>
                             <button class="reject-btn" data-index="${index}">Reject</button>
                         </td>
                     `;
@@ -95,9 +95,30 @@
             // Call the function to create initial table rows
             createBookingRows();
 
-            // Add event listener to reject buttons
+            // Add event listener to accept and reject buttons
             document.querySelector('#bookingTable tbody').addEventListener('click', function(event) {
-                if (event.target.classList.contains('reject-btn')) {
+                if (event.target.classList.contains('accept-btn')) {
+                    const index = parseInt(event.target.getAttribute('data-index'));
+                    // Handle accept action here
+                    // For now, let's just log the index of the accepted booking
+                    console.log("Accepted booking at index:", index);
+                    // After the admin accepts the booking, you can update the color of the date cell
+                    const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
+                    const duration = bookings[index].duration;
+                    switch (duration) {
+                        case 'Full day':
+                            dateCell.style.backgroundColor = 'green';
+                            break;
+                        case 'Morning':
+                            dateCell.style.backgroundColor = 'blue';
+                            break;
+                        case 'Afternoon':
+                            dateCell.style.backgroundColor = 'aqua';
+                            break;
+                        default:
+                            break;
+                    }
+                } else if (event.target.classList.contains('reject-btn')) {
                     const index = parseInt(event.target.getAttribute('data-index'));
                     bookings.splice(index, 1); // Remove the rejected booking from the array
                     localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage

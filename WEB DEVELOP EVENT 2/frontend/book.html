@@ -68,36 +68,36 @@
     </div> 
         <label>Duration:</label><br><br>
         <div class="column">
-            <input type="radio" id="check" name="time">
-           <label for="check-fullday">Full day</label>
-           <input type="radio" id="check" name="time">
-           <label for="check-Halfday">Morning</label>
-           <input type="radio" id="check" name="time">
-           <label for="check-Halfday">Afternoon</label>
+            <input type="radio" id="checkFullDay" name="duration" value="Full day">
+           <label for="checkFullDay">Full day</label>
+           <input type="radio" id="checkMorning" name="duration" value="Morning">
+           <label for="checkMorning">Morning</label>
+           <input type="radio" id="checkAfternoon" name="duration" value="Afternoon">
+           <label for="checkAfternoon">Afternoon</label>
           </div><br>
 
           <div class="column">
             <label>Choose your necessaries:</label><br>
             <ul class="checkbox-list">
                 <li>
-                    <input type="checkbox" id="check-projector" name="necessaries">
-                    <label for="check-projector">Projector</label>
+                    <input type="checkbox" id="checkProjector" name="necessaries">
+                    <label for="checkProjector">Projector</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="check-mic" name="necessaries">
-                    <label for="check-mic">Mic</label>
+                    <input type="checkbox" id="checkMic" name="necessaries">
+                    <label for="checkMic">Mic</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="check-ac" name="necessaries">
-                    <label for="check-ac">AC</label>
+                    <input type="checkbox" id="checkAC" name="necessaries">
+                    <label for="checkAC">AC</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="check-board" name="necessaries">
-                    <label for="check-board">Board</label>
+                    <input type="checkbox" id="checkBoard" name="necessaries">
+                    <label for="checkBoard">Board</label>
                 </li>
                 <li>
-                    <input type="checkbox" id="check-wifi" name="necessaries">
-                    <label for="check-wifi">Wifi</label>
+                    <input type="checkbox" id="checkWifi" name="necessaries">
+                    <label for="checkWifi">Wifi</label>
                 </li>
             </ul>
             
@@ -115,23 +115,19 @@
                 event.preventDefault();
 
                 // Get form data
-               
-               
                 const eventDate = document.getElementById('eventDate').value;
-                
                 const eventName = document.getElementById('eventName').value;
                 const startTime = document.getElementById('startTime').value;
                 const endTime = document.getElementById('endTime').value;
+                const duration = document.querySelector('input[name="duration"]:checked').value;
 
                 // Create a new booking object
                 const newBooking = {
                     eventDate: eventDate,
-                   
                     eventName: eventName,
-                   
                     startTime: startTime,
-                    endTime: endTime
-                    // Add more fields as needed
+                    endTime: endTime,
+                    duration: duration
                 };
 
                 // Store the booking data in local storage

@@ -114,3 +114,28 @@ background: rgb(208, 212, 86);
     background: #9b59b6
     ;
 }
+
+.column {
+    display: flex;
+    
+}
+.column .details{
+    position: relative;
+    margin-top:10rem;
+    left:20%;
+}
+
+.column div{
+    margin:18px 5px;
+    
+}
+
+.column button{
+    margin:7px;
+    width:2rem;
+    height: 1.5rem;
+    border-radius: 40px;
+}
+.column p{
+    font-size: 20px;
+}
