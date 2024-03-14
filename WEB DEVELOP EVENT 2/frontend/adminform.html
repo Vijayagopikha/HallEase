@@ -38,9 +38,7 @@
     <table id="bookingTable">
         <thead>
             <tr>
-                
                 <th>Date</th>
-               
                 <th>Event</th>
                 <th>Start time</th>
                 <th>End time</th>
@@ -65,7 +63,6 @@
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
                         <td>${booking.eventDate}</td>
-                      
                         <td>${booking.eventName}</td>
                         <td>${booking.startTime}</td>
                         <td>${booking.endTime}</td>
@@ -75,6 +72,23 @@
                         </td>
                     `;
                     tableBody.appendChild(newRow);
+
+                    // Apply color to the corresponding date based on duration
+                    const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
+                    const duration = booking.duration;
+                    switch (duration) {
+                        case 'Full day':
+                            dateCell.style.backgroundColor = 'green';
+                            break;
+                        case 'Morning':
+                            dateCell.style.backgroundColor = 'orange';
+                            break;
+                        case 'Afternoon':
+                            dateCell.style.backgroundColor = 'yellow';
+                            break;
+                        default:
+                            break;
+                    }
                 });
             }
 
