@@ -52,17 +52,12 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Sample booking data, replace with actual data
-            const bookings = [
-                { date: '2024-03-18', eventName: 'Meeting', startTime: '09:00', endTime: '12:00' },
-                { date: '2024-03-20', eventName: 'Training', startTime: '14:00', endTime: '17:00' }
-                // Add more booking objects as needed
-            ];
-    
-            const tableBody = document.querySelector('#bookingTable tbody');
-    
+            // Initialize bookings array
+            let bookings = [];
+
             // Function to create table rows from booking data
             function createBookingRows() {
+                const tableBody = document.querySelector('#bookingTable tbody');
                 tableBody.innerHTML = ''; // Clear existing rows
                 bookings.forEach((booking, index) => {
                     const newRow = document.createElement('tr');
@@ -79,12 +74,45 @@
                     tableBody.appendChild(newRow);
                 });
             }
-    
-            // Call the function to create initial table rows
-            createBookingRows();
-    
-            // Add event listeners to reject buttons
-            tableBody.addEventListener('click', function(event) {
+
+            // Function to handle form submission
+            function handleFormSubmission(event) {
+                event.preventDefault();
+
+                // Get form data
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const eventName = document.getElementById('eventName').value;
+                const eventDate = document.getElementById('eventDate').value;
+                const startTime = document.getElementById('startTime').value;
+                const endTime = document.getElementById('endTime').value;
+
+                // Create a new booking object
+                const newBooking = {
+                    date: eventDate,
+                    eventName: eventName,
+                    startTime: startTime,
+                    endTime: endTime
+                };
+
+                // Add the new booking to the bookings array
+                bookings.push(newBooking);
+
+                // Call the function to create table rows with updated data
+                createBookingRows();
+
+                // Reset the form
+                document.getElementById('bookingForm').reset();
+
+                // Optionally, display a confirmation message
+                alert('Booking registered successfully!');
+            }
+
+            // Add event listener to form submission
+            document.getElementById('bookingForm').addEventListener('submit', handleFormSubmission);
+            
+            // Add event listener to reject buttons
+            document.querySelector('#bookingTable tbody').addEventListener('click', function(event) {
                 if (event.target.classList.contains('reject-btn')) {
                     const index = parseInt(event.target.getAttribute('data-index'));
                     bookings.splice(index, 1); // Remove the rejected booking from the array
