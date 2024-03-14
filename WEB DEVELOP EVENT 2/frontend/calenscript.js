@@ -16,7 +16,7 @@ const renderCalendar = () => {
 
     let liTag="";
 
-    for(let i=firstDayOfMonth; i>0; i++){
+    for(let i=firstDayOfMonth; i>0; i--){
         liTag+=`<li>${ lastDateOfLastMonth -i +1}</li>`;
     }
     
