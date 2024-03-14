@@ -53,7 +53,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize bookings array
-            let bookings = [];
+            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
 
             // Function to create table rows from booking data
             function createBookingRows() {
@@ -62,7 +62,7 @@
                 bookings.forEach((booking, index) => {
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
-                        <td>${booking.date}</td>
+                        <td>${booking.eventDate}</td>
                         <td>${booking.eventName}</td>
                         <td>${booking.startTime}</td>
                         <td>${booking.endTime}</td>
@@ -75,52 +75,19 @@
                 });
             }
 
-            // Function to handle form submission
-            function handleFormSubmission(event) {
-                event.preventDefault();
+            // Call the function to create initial table rows
+            createBookingRows();
 
-                // Get form data
-                const fullName = document.getElementById('fullName').value;
-                const email = document.getElementById('email').value;
-                const eventName = document.getElementById('eventName').value;
-                const eventDate = document.getElementById('eventDate').value;
-                const startTime = document.getElementById('startTime').value;
-                const endTime = document.getElementById('endTime').value;
-
-                // Create a new booking object
-                const newBooking = {
-                    date: eventDate,
-                    eventName: eventName,
-                    startTime: startTime,
-                    endTime: endTime
-                };
-
-                // Add the new booking to the bookings array
-                bookings.push(newBooking);
-
-                // Call the function to create table rows with updated data
-                createBookingRows();
-
-                // Reset the form
-                document.getElementById('bookingForm').reset();
-
-                // Optionally, display a confirmation message
-                alert('Booking registered successfully!');
-            }
-
-            // Add event listener to form submission
-            document.getElementById('bookingForm').addEventListener('submit', handleFormSubmission);
-            
             // Add event listener to reject buttons
             document.querySelector('#bookingTable tbody').addEventListener('click', function(event) {
                 if (event.target.classList.contains('reject-btn')) {
                     const index = parseInt(event.target.getAttribute('data-index'));
                     bookings.splice(index, 1); // Remove the rejected booking from the array
+                    localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
                     createBookingRows(); // Update the table with the new booking data
                 }
             });
         });
     </script>
-    
 </body>
 </html>
