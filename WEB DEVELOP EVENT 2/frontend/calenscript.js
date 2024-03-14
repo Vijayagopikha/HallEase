@@ -35,6 +35,7 @@ const renderCalendar = () => {
 
  currentDate.innerText= `${months[currMonth]} ${currYear}` ;
  daysTag.innerHTML=liTag;
+<<<<<<< HEAD
 
     let firstDayOfMonth = new Date(currYear, currMonth, 1).getDay();
     lastDateOfMonth = new Date(currYear, currMonth + 1, 0).getDate();
@@ -53,6 +54,10 @@ const renderCalendar = () => {
     daysTag.innerHTML = liTag;
     attachDateClickEvent(); // Attach click event to each date
 
+=======
+ attachDateClickEvent(); // Attach click event to each date
+
+>>>>>>> fe2546d406b064369a75451f20bc0126fffad112
 }
 
 renderCalendar();
