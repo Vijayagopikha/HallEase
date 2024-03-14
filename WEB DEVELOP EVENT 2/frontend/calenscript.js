@@ -9,7 +9,7 @@ let date = new Date(),
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 const renderCalendar = () => {
-<<<<<<< HEAD
+
     let firstDayOfMonth=new Date(currYear,currMonth,1).getDay();
     lastDateOfMonth=new Date(currYear,currMonth+1,0).getDate();
     lastDayOfMonth=new Date(currYear,currMonth,lastDateOfMonth).getDay();
@@ -35,7 +35,7 @@ const renderCalendar = () => {
 
  currentDate.innerText= `${months[currMonth]} ${currYear}` ;
  daysTag.innerHTML=liTag;
-=======
+
     let firstDayOfMonth = new Date(currYear, currMonth, 1).getDay();
     lastDateOfMonth = new Date(currYear, currMonth + 1, 0).getDate();
     lastDateOfLastMonth = new Date(currYear, currMonth, 0).getDate();
@@ -52,7 +52,7 @@ const renderCalendar = () => {
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTag.innerHTML = liTag;
     attachDateClickEvent(); // Attach click event to each date
->>>>>>> 2f75af930ca40f036afcdf8266d5f264432c614e
+
 }
 
 renderCalendar();
