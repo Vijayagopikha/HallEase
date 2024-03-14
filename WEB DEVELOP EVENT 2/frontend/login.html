@@ -22,15 +22,15 @@
                 <a href="#">Forget Password?</a><br><br>
             </div>
             <div class="home">
-             <center><a href="index.html" class = "home">Home</a></center><br><br>
+             <a href="index.html" class = "home">Home</a><br><br>
             </div>
-           
-            <center><button type = "submit" class = "btn">Login</button></center>
-
+          
+            <center><button type = "submit" onclick="call()" class = "btn">Login</button></center>
+            <a style="display:block" id="myanchor" href="indexhall.html">login</a>
 
         </form>
     </div>
-    <script>
+    <!-- <script>
         document.getElementById("loginForm").addEventListener("submit", async(event)=>{
             event.preventDefault();
 
@@ -39,6 +39,7 @@
             const password = formData.get("password");
 
             try{
+                
                 const response = await fetch("/login", {
                     method: "POST",
                     headers: {
@@ -49,6 +50,7 @@
                   
                 if(!response.ok){
                     throw new Error("Invalid email or password");
+                    alert("Login Successful");
                 }
 
 
@@ -62,12 +64,90 @@
                 }
             }catch(error){
                 console.error("Error during  login:", error);
-                alert("Error during login: "+error.message);
+                alert("Error during login:");
 
             }
         });
-    </script>
+    </script> -->
    
+    <script>
+        /* localStorage.setItem('isLogin', 'true'); */
+       // const storedLogin = localStorage.getItem('isLogin');
+        const storedLogin = localStorage.getItem('isLogin');
+if (storedLogin == 'true') {
+    window.location.href = "indexhall.html";
+    //alert('heiii');
+}
+console.log(window.location.href); 
+        //window.location.href="indexhall.html";
+        console.log(window.location.href);
+        // Define the data as a JSON object
+var users = [
+  {
+    "_id": "65f28d9264ed0a013ef8fc8f",
+    "email": "cseasecretary@gmail.com",
+    "password": "csea_24"
+  },
+  {
+    "_id": "65f28d9264ed0a013ef8fc90",
+    "email": "cccsecretary@gmail.com",
+    "password": "ccca_24"
+  },
+  {
+    "_id": "65f28d9264ed0a013ef8fc91",
+    "email": "eceasecretary@gmail.com",
+    "password": "ecea_24"
+  },
+  {
+    "_id": "65f28d9264ed0a013ef8fc92",
+    "email": "eeeasecretary@gmail.com",
+    "password": "eeea_24"
+  },
+  {
+    "_id": "65f28d9264ed0a013ef8fc93",
+    "email": "csisecretary@gmail.com",
+    "password": "csi_24"
+  },
+  {
+    "_id": "65f28d9264ed0a013ef8fc94",
+    "email": "madcsecretary@gmail.com",
+    "password": "madc_24"
+  }
+];
+
+function login(email, password) {
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].email === email && users[i].password === password) {
+      return true; 
+    }
+  }
+  return false; 
+}
+
+
+function call(){
+   
+   const inputEmail=document.getElementById('email').value;
+   const inputPassword=document.getElementById('password').value;
+if (login(inputEmail, inputPassword)) {
+    alert("login Success");
+    redirectToIndexHall();
+    window.location.reload();
+   // window.location.href="indexhall.html";
+} else {
+  alert("Invalid email or password");
+}
+}
+
+function move(){
+
+}
+function redirectToIndexHall() {
     
+    //alert("replace");
+    localStorage.setItem('isLogin', 'true');
+}
+  
+    </script>
 </body>
 </html>

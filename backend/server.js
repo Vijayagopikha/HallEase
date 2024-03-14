@@ -43,12 +43,16 @@ try{
 const User = mongoose.model('User', userSchema);
 
 const jwtSecretKey = process.env.JWT_SECRET || 'defaultSecretKey';
+app.get('/e-hori',(req,res)=>{
+  res.send("E:\E-HORIZON\E_Horizon\WEB DEVELOP EVENT 2\frontend\index.html");
+})
 
 app.post('/login', async(req, res)=>{
   const { email, password} = req.body;
   try{
     const user = await User.findOne({email});
-    if(!user){
+    console.log(user);
+        if(!user){
       return res.status(401).json({ message: 'Invalid email or passowrd'});
 
     }
