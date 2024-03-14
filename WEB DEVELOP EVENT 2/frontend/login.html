@@ -46,19 +46,23 @@
                     },
                     body: JSON.stringify({email, password})
                 });
+                  
+                if(!response.ok){
+                    throw new Error("Invalid email or password");
+                }
+
 
                 const data = await response.json();
-                if(response.ok){
+                if(data.token){
 
                     window.location.href = "indexhall.html";
                 }
                 else{
-                    const errorMessage = await response.text();
-                    alert("Error during login: "+errorMessage);
+                    throw new Error("Token not found in response");
                 }
             }catch(error){
                 console.error("Error during  login:", error);
-                alert("An error occured during login. Please try again later.");
+                alert("Error during login: "+error.message);
 
             }
         });
