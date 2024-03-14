@@ -53,5 +53,36 @@
 </div>
 
     <script src="calenscript.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve bookings from local storage
+            const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+
+            // Get date cells and set background color based on booking duration
+            const dateCells = document.querySelectorAll('.days li');
+            bookings.forEach(booking => {
+                if (booking.accepted) { // Check if booking is accepted
+                    const date = new Date(booking.eventDate);
+                    const dayIndex = date.getDay();
+                    let color;
+                    switch (booking.duration) {
+                        case 'Full day':
+                            color = 'green';
+                            break;
+                        case 'Morning':
+                            color = 'blue';
+                            break;
+                        case 'Afternoon':
+                            color = 'aqua';
+                            break;
+                        default:
+                            color = '';
+                            break;
+                    }
+                    dateCells[dayIndex].style.backgroundColor = color;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
