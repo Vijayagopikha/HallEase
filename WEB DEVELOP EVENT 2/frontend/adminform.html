@@ -50,6 +50,49 @@
         </tbody>
     </table>
 
-    <script src="adminscript.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample booking data, replace with actual data
+            const bookings = [
+                { date: '2024-03-18', eventName: 'Meeting', startTime: '09:00', endTime: '12:00' },
+                { date: '2024-03-20', eventName: 'Training', startTime: '14:00', endTime: '17:00' }
+                // Add more booking objects as needed
+            ];
+    
+            const tableBody = document.querySelector('#bookingTable tbody');
+    
+            // Function to create table rows from booking data
+            function createBookingRows() {
+                tableBody.innerHTML = ''; // Clear existing rows
+                bookings.forEach((booking, index) => {
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${booking.date}</td>
+                        <td>${booking.eventName}</td>
+                        <td>${booking.startTime}</td>
+                        <td>${booking.endTime}</td>
+                        <td>
+                            <button class="accept-btn">Accept</button>
+                            <button class="reject-btn" data-index="${index}">Reject</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(newRow);
+                });
+            }
+    
+            // Call the function to create initial table rows
+            createBookingRows();
+    
+            // Add event listeners to reject buttons
+            tableBody.addEventListener('click', function(event) {
+                if (event.target.classList.contains('reject-btn')) {
+                    const index = parseInt(event.target.getAttribute('data-index'));
+                    bookings.splice(index, 1); // Remove the rejected booking from the array
+                    createBookingRows(); // Update the table with the new booking data
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>

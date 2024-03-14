@@ -11,15 +11,15 @@
     
 <section class="container">
     <header>BOOKING FORM</header>
-    <form action="#" class="form">
+    <form action="#" class="form" id="bookingForm">
        <div class="column">
         <div class="input-boxx">
             <label>Full name</label>
-            <input type="text" placeholder="Enter full name"required>
+            <input type="text" id="fullName" placeholder="Enter full name" required>
         </div>
             <div class="input-boxx">
                 <label>Email Address</label>
-                <input type="email" placeholder="Email"required>
+                <input type="email" id="email" placeholder="Email" required>
             </div>
         </div>
            
@@ -27,56 +27,54 @@
           
           <div class="input-boxx">
             <label>Event Name</label>
-            <input type="text" placeholder="Event name"required>
+            <input type="text" id="eventName" placeholder="Event name" required>
         </div>
 
-        
-    
         <div class="input-boxx">
             <label>Date</label>
-            <input type="date" placeholder="Enter date"required>
+            <input type="date" id="eventDate" placeholder="Enter date" required>
         </div>
     </div>
     <div class="column">
         <div class="input-boxx">
             <label>Start Time</label>
-            <input type="time" placeholder="Start time"required>
+            <input type="time" placeholder="Start time" required>
         </div>
         <div class="input-boxx">
             <label>End Time</label>
-            <input type="time" placeholder="End Time"required>
+            <input type="time" placeholder="End Time" required>
         </div>
     </div>
 
     <div class="column">
         <div class="input-boxx">
             <label>Phone Number</label>
-            <input type="tel" placeholder="Phone"required>
+            <input type="tel" placeholder="Phone" required>
         </div>
         <div class="input-boxx">
             <label>Department</label>
-            <input type="text" placeholder="Department"required>
+            <input type="text" placeholder="Department" required>
         </div>
     </div>
     <div class="column">
         <div class="input-boxx">
             <label>Number of Guests</label>
-            <input type="number" placeholder="---"required>
+            <input type="number" placeholder="---" required>
         </div>
         <div class="input-boxx">
             <label>Purpose of the Event</label>
-            <input type="text" placeholder="Purpose"required>
+            <input type="text" placeholder="Purpose" required>
         </div>
     </div>
    
     </div> 
         <label>Duration:</label><br><br>
         <div class="column">
-            <input type="radio" id="check"name="time">
+            <input type="radio" id="check" name="time">
            <label for="check-fullday">Full day</label>
-           <input type="radio" id="check"name="time">
+           <input type="radio" id="check" name="time">
            <label for="check-Halfday">Morning</label>
-           <input type="radio" id="check"name="time">
+           <input type="radio" id="check" name="time">
            <label for="check-Halfday">Afternoon</label>
           </div><br>
 
@@ -106,54 +104,31 @@
             </ul>
             
         </div>  
-        <button type="submit"><a href="#">Submit</a></button>
+        <button type="submit">Register</button>
            
     </form>
-    <div id="confirmation" class="hidden">Booking Successful!</div>
-</section>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const bookingForm = document.getElementById('bookingForm');
-        const confirmationMsg = document.getElementById('confirmation');
+    <div id="confirmation" class="hidden"></div>
 
-        bookingForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            // Get form data
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const eventName = document.getElementById('eventName').value;
-            const eventDate = document.getElementById('eventDate').value;
-            // Add logic to get other form fields
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingForm = document.getElementById('bookingForm');
+            const confirmationMsg = document.getElementById('confirmation');
 
-            // Construct the table row HTML
-            const newRowHTML = `
-                <tr>
-                    <td>${eventDate}</td>
-                    <td>${eventName}</td>
-                    <td>Start Time</td>
-                    <td>End Time</td>
-                    <td>
-                        <button class="accept-btn">Accept</button>
-                        <button class="reject-btn">Reject</button>
-                    </td>
-                </tr>
-            `;
+            bookingForm.addEventListener('submit', function(event) {
+                event.preventDefault();
 
-            // Append the new row to the table body
-            const tableBody = document.querySelector('#bookingTable tbody');
-            tableBody.insertAdjacentHTML('beforeend', newRowHTML);
+                // Display confirmation message
+                confirmationMsg.classList.remove('hidden');
+                setTimeout(function() {
+                    confirmationMsg.classList.add('hidden');
+                }, 5000);
 
-            // Display confirmation message
-            confirmationMsg.classList.remove('hidden');
-            setTimeout(function() {
-                confirmationMsg.classList.add('hidden');
-            }, 5000);
-
-            // Reset form fields
-            bookingForm.reset();
+                // Reset form fields
+                bookingForm.reset();
+            });
         });
-    });
-</script>
+    </script>
+</section>
     
 </body>
 </html>
