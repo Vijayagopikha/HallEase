@@ -74,6 +74,8 @@
         /* localStorage.setItem('isLogin', 'true'); */
        // const storedLogin = localStorage.getItem('isLogin');
         const storedLogin = localStorage.getItem('isLogin');
+
+       
 if (storedLogin == 'true') {
     window.location.href = "indexhall.html";
     //alert('heiii');
@@ -146,6 +148,7 @@ function redirectToIndexHall() {
     
     //alert("replace");
     localStorage.setItem('isLogin', 'true');
+    //localStorage.remove("isLogin");
 }
   
     </script>

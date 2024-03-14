@@ -13,13 +13,13 @@ body{
     padding:10px;
     background-image:url('admin.jpg') ;
     background-size:cover;
-    background-position:center;
+    background-position: relative;
     
 
 }
 
 h1 {
-  font-size: px;
+  font-size: 0px;
   background: -webkit-linear-gradient(#eee,#00ffff);
   
   -webkit-text-fill-color: transparent;
@@ -28,32 +28,32 @@ h1 {
 
 .container{
     position:relative;
-    max-width:700px;
-    width:100%;
+    max-width:500px;
+    width:80%;
     background:transparent;
     backdrop-filter:blur(17px);
-    padding:25px 30px;
+    
     border-radius:8px;
     box-shadow:0 0 15 rgba(0,0,0,0.1);
     border:2px solid rgba(8, 7, 7, 0.981);
 
 }
 .container header{
-    font-size:40px;
+    font-size: 10px;
     color:rgb(26, 25, 25);
-    font-weight:800;
+    font-weight:400;
     text-align:center;
 
 }
 .container .form{
-    margin-top:30px;
+    margin-top:2px;
     background:transparent;
 
 }
 .form .input-boxx{
     width: 100%;
     position:relative;
-    height:50px;
+    height:40px;
     background:transparent;
     border-color:rgb(241,237,237);
     margin:40px 10px;
@@ -87,7 +87,7 @@ h1 {
     color: rgb(156, 148, 148);
     text-align:left ; 
     padding-left: 10px;
-    font-size:15px;
+    font-size:13px;
    
 }
 
