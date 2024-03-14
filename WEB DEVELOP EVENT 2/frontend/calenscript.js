@@ -10,9 +10,17 @@ currMonth=date.getMonth();
 const months =["January","February","March","April","May","June","July","August","September","October","November","December"];
 
 const renderCalendar = () => {
-    let lastDateOfMonth=new Date(currYear,currMonth+1,0).getDate();
+    let firstDayOfMonth=new Date(currYear,currMonth,1).getDay();
+    lastDateOfMonth=new Date(currYear,currMonth+1,0).getDate();
+    lastDateOfLastMonth=new Date(currYear,currMonth,0).getDate();
+
     let liTag="";
-    for(let i=0;i<=lastDateOfMonth;i++)
+
+    for(let i=firstDayOfMonth; i>0; i++){
+        liTag+=`<li>${ lastDateOfLastMonth -i +1}</li>`;
+    }
+    
+    for(let i=1;i<=lastDateOfMonth;i++)
     {
         liTag+=`<li>${i}</li>`;
     }
@@ -22,9 +30,10 @@ const renderCalendar = () => {
 
 renderCalendar();
 
-prevNextIcon.foreach(icon =>{
+prevNextIcon.forEach(icon =>{
     icon.addEventListener("click",()=>{
-        console.log(icon);
+        currMonth= icon.id=== "prev" ? currMonth - 1 : currMonth + 1;
+        renderCalendar();
     });
 });
 
