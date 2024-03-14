@@ -34,7 +34,7 @@ userSchema.pre('save',async function(next){
 }
 try{
   const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.passworrd, salt);
+  this.password = await bcrypt.hash(this.password, salt);
   next();
 }catch(error){
   next(error);
@@ -42,6 +42,8 @@ try{
 });
 
 const User = mongoose.model('User', userSchema);
+
+const jwtSecretKey = process.env.JWT_SECRET || 'defaultSecretKey';
 
 app.post('/login', async(req, res)=>{
   const { email, password} = req.body;
@@ -58,8 +60,10 @@ app.post('/login', async(req, res)=>{
 
     }
 
-    const jwtSecretKey = require('crypto').randomBytes(64).toString('hex');
-    const token = jwt.sign({email: user.email}, jwtSecretKey);  
+    
+    const token = jwt.sign({email: user.email,  userId: user._id}, jwtSecretKey);  
+
+
   
     res.status(200).json({token});
   }

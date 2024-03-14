@@ -8,14 +8,14 @@
 <body>
     
     <div class="wrapper">
-        <form action="">
+        <form id="loginForm">
             <h1>LOGIN</h1>
             <div class="input-box">
-                <input type="email" name = "email" placeholder="Email" required>
+                <input type="email" id = "email" name = "email" placeholder="Email" required>
                 <i class='bx bx-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" name = "passowrd" placeholder="Password" required>
+                <input type="password" id = "password" name = "password" placeholder="Password" required>
                 <i class='bx bxs-lock-alt' ></i>            </div>
             <div class="remember-forget">
                 <label><input type="checkbox">Remember Me</label>
@@ -25,12 +25,43 @@
              <a href="#">Home</a><br><br>
             </div>
            
-            <center><a href = "indexhall.html" class = "btn">Login</a></center>
+            <center><button type = "submit" class = "btn">Login</button></center>
 
 
         </form>
     </div>
-    
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async(event)=>{
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const email = formData.get("email");
+            const password = formData.get("password");
+
+            try{
+                const response = await fetch("/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({email, password})
+                });
+
+                const data = await response.json();
+                if(response.ok){
+
+                    window.location.href = "indexhall.html";
+                }
+                else{
+                    alert(data.message);
+                }
+            }catch(error){
+                console.error("Error during  login:", error);
+                alert("An error occured during login. Please try again later.");
+
+            }
+        });
+    </script>
    
     
 </body>
