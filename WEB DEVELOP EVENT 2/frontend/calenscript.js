@@ -12,18 +12,27 @@ const months =["January","February","March","April","May","June","July","August"
 const renderCalendar = () => {
     let firstDayOfMonth=new Date(currYear,currMonth,1).getDay();
     lastDateOfMonth=new Date(currYear,currMonth+1,0).getDate();
-    lastDateOfLastMonth=new Date(currYear,currMonth,0).getDate();
+    lastDayOfMonth=new Date(currYear,currMonth,lastDateOfMonth).getDay();
 
+    lastDateOfLastMonth=new Date(currYear,currMonth,0).getDate();
+    
     let liTag="";
 
     for(let i=firstDayOfMonth; i>0; i--){
-        liTag+=`<li>${ lastDateOfLastMonth -i +1}</li>`;
+        liTag+=`<li class="inactive">${ lastDateOfLastMonth -i +1}</li>`;
     }
     
     for(let i=1;i<=lastDateOfMonth;i++)
     {
-        liTag+=`<li>${i}</li>`;
+        let isToday = i === date.getDate() && currMonth === new Date().getMonth()
+                     && currYear === new Date().getFullYear() ? "active" : "";
+        liTag+=`<li class="${isToday}">${i}</li>`;
     }
+
+    for(let i= lastDayOfMonth; i<6; i++){
+        liTag+=`<li class="inactive">${i- lastDayOfMonth +1}</li>`;
+    }
+
  currentDate.innerText= `${months[currMonth]} ${currYear}` ;
  daysTag.innerHTML=liTag;
 }
