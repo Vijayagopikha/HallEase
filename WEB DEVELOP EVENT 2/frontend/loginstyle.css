@@ -15,6 +15,10 @@ body{
     
 
 }
+
+.home:hover{
+    color: red;
+}
 .wrapper{
 width:420px;
 background:transparent;
