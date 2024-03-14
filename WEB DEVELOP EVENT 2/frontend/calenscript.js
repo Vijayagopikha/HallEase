@@ -44,7 +44,7 @@ function attachDateClickEvent() {
             const selectedMonth = currMonth + 1; // Month is zero-based index, so add 1
             const selectedYear = currYear;
             // Redirect to the booking form page with selected date parameters
-            window.location.href = `bookingform.html?date=${selectedYear}-${selectedMonth}-${selectedDate}`;
+            window.location.href = `book.html?date=${selectedYear}-${selectedMonth}-${selectedDate}`;
         });
     });
 }
