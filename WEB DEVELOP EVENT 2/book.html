@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking form</title>
+    <link rel="stylesheet" href="bookstyle.css">
+
+</head>
+<body>
+    
+<section class="container">
+    <header>Booking Form</header>
+    <form action="#" class="form">
+       <div class="column">
+        <div class="input-boxx">
+            <label>Full name</label>
+            <input type="text" placeholder="Enter full name"required>
+        </div>
+            <div class="input-boxx">
+                <label>Email Address</label>
+                <input type="email" placeholder="Email"required>
+            </div>
+        </div>
+           
+        <div class="column">
+          
+          <div class="input-boxx">
+            <label>Event Name</label>
+            <input type="text" placeholder="Event name"required>
+        </div>
+
+        
+    
+        <div class="input-boxx">
+            <label>Date</label>
+            <input type="date" placeholder="Enter date"required>
+        </div>
+    </div>
+    <div class="column">
+        <div class="input-boxx">
+            <label>Start Time</label>
+            <input type="time" placeholder="Start time"required>
+        </div>
+        <div class="input-boxx">
+            <label>End Time</label>
+            <input type="time" placeholder="End Time"required>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="input-boxx">
+            <label>Phone Number</label>
+            <input type="number" placeholder="Phone"required>
+        </div>
+        <div class="input-boxx">
+            <label>Department</label>
+            <input type="number" placeholder="Department"required>
+        </div>
+    </div>
+    <div class="column">
+        <div class="input-boxx">
+            <label>Number of Guests</label>
+            <input type="number" placeholder="---"required>
+        </div>
+        <div class="input-boxx">
+            <label>Purpose of the Event</label>
+            <input type="text" placeholder="Purpose"required>
+        </div>
+    </div>
+   
+    </div> 
+        <label>Duration:</label><br><br>
+        <div class="column">
+            <input type="radio" id="check"name="time">
+           <label for="check-fullday">Full day</label>
+           <input type="radio" id="check"name="time">
+           <label for="check-Halfday">Morning</label>
+           <input type="radio" id="check"name="time">
+           <label for="check-Halfday">Afternoon</label>
+          </div><br>
+
+          <div class="column">
+            <label>Choose your necessaries:</label><br>
+            <ul class="checkbox-list">
+                <li>
+                    <input type="checkbox" id="check-projector" name="necessaries">
+                    <label for="check-projector">Projector</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check-mic" name="necessaries">
+                    <label for="check-mic">Mic</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check-ac" name="necessaries">
+                    <label for="check-ac">AC</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check-board" name="necessaries">
+                    <label for="check-board">Board</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="check-wifi" name="necessaries">
+                    <label for="check-wifi">Wifi</label>
+                </li>
+            </ul>
+        </div>  
+           
+    </form>
+</section>
+
+    
+</body>
+</html>
