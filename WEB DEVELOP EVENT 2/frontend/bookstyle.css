@@ -144,3 +144,24 @@ input[type="checkbox"] {
     left: 0;
 }
 
+div  .checkbox-list li{
+    list-style: none;
+}
+
+button{
+    
+    padding: 5px;
+    margin-top: 2rem;
+    width: 12rem;
+    height:45px;
+   margin-left:35%;
+   border-radius: 25px;
+   border:2px solid white;
+   background-color: #00ffff;
+    cursor: pointer;
+}
+button a{
+    color:#121111;
+    font-size: large;
+    text-decoration: none;
+}
