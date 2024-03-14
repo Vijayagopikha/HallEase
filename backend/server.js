@@ -8,8 +8,7 @@ import core from 'cors';
 
 dotenv.config();
 
-mongoose
-  .connect(process.env.MONGODB_URL)
+mongoose.connect(process.env.MONGODB_URL)
   .then(() => {
     console.log('Connected to db');
   })
