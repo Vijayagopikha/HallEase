@@ -115,19 +115,20 @@
                 event.preventDefault();
 
                 // Get form data
-                const fullName = document.getElementById('fullName').value;
-                const email = document.getElementById('email').value;
-                const eventName = document.getElementById('eventName').value;
+               
+               
                 const eventDate = document.getElementById('eventDate').value;
+                
+                const eventName = document.getElementById('eventName').value;
                 const startTime = document.getElementById('startTime').value;
                 const endTime = document.getElementById('endTime').value;
 
                 // Create a new booking object
                 const newBooking = {
-                    fullName: fullName,
-                    email: email,
-                    eventName: eventName,
                     eventDate: eventDate,
+                   
+                    eventName: eventName,
+                   
                     startTime: startTime,
                     endTime: endTime
                     // Add more fields as needed

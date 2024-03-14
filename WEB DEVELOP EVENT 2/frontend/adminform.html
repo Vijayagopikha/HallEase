@@ -38,10 +38,12 @@
     <table id="bookingTable">
         <thead>
             <tr>
+                
                 <th>Date</th>
-                <th>Event Name</th>
-                <th>Start Time</th>
-                <th>End Time</th>
+               
+                <th>Event</th>
+                <th>Start time</th>
+                <th>End time</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -63,6 +65,7 @@
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
                         <td>${booking.eventDate}</td>
+                      
                         <td>${booking.eventName}</td>
                         <td>${booking.startTime}</td>
                         <td>${booking.endTime}</td>
