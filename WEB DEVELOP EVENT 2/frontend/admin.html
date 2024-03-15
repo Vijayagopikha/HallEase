@@ -25,7 +25,7 @@
              <a href="index.html" class = "home">Home</a><br><br>
             </div>
           
-            <center><button type = "submit" onclick="call()" class = "btn">Login</button></center>
+            <center><button type = "submit" onclick="call2()" class = "btn">Login</button></center>
             <a style="display:block" id="myanchor" href="adminform.html">login</a>
 
         </form>
@@ -82,7 +82,7 @@ console.log(window.location.href);
         //window.location.href="indexhall.html";
         console.log(window.location.href);
         // Define the data as a JSON object
-var users = [
+var users2 = [
   {
     "_id": "65f2f26393d523caef2de730",
     "email" : "cses1admin@gmail.com",
@@ -106,21 +106,22 @@ var users = [
   }
 ];
 
-function login(email, password) {
-  for (var i = 0; i < users.length; i++) {
-    if (users[i].email === email && users[i].password === password) {
-      return true; 
+function login2(email, password) {
+    console.log(email,password);
+  for (var i = 0; i < users2.length; i++) {
+    if (users2[i].email === email && users2[i].password === password) {
+      return true;
     }
   }
   return false; 
 }
 
 
-function call(){
+function call2(){
    
    const inputEmail=document.getElementById('email').value;
    const inputPassword=document.getElementById('password').value;
-if (login(inputEmail, inputPassword)) {
+if (login2(inputEmail, inputPassword)) {
     alert("login Success");
     redirectToIndexHall();
     window.location.reload();
@@ -138,6 +139,8 @@ function redirectToIndexHall() {
     //alert("replace");
     localStorage.setItem('isLogin', 'true');
 }
+
+
   
     </script>
 </body>

@@ -46,5 +46,11 @@
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector('.log').addEventListener('click',function(){
+            localStorage.removeItem('isLogin');
+            window.location.reload();
+        })
+    </script>
 </body>
 </html>

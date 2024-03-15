@@ -31,10 +31,31 @@
             color: white;
             border: none;
         }
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+        .nav ul {
+            list-style: none;
+        }
+        .log2{
+            text-decoration: none;
+            background: turquoise;
+            color: #000;
+            padding: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
-    <h1>Admin Page - Bookings</h1>
+    <div class="nav">
+        <h1>Admin Page - Bookings</h1>
+        <ul class = "nav-links">
+            <li><a href = "login.html" class ="log2">Log Out</a></li>
+        </ul>
+    </div>
     <table id="bookingTable">
         <thead>
             <tr>
@@ -97,6 +118,12 @@
                 }
             });
         });
+
+        document.querySelector('.log2').addEventListener('click',function(){
+            localStorage.removeItem('isLogin');
+            window.location.href = "index.html";
+            window.location.reload();
+        })
     </script>
 </body>
 </html>
