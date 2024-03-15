@@ -31,31 +31,10 @@
             color: white;
             border: none;
         }
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-        }
-        .nav ul {
-            list-style: none;
-        }
-        .log2{
-            text-decoration: none;
-            background: turquoise;
-            color: #000;
-            padding: 10px;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <h1>Admin Page - Bookings</h1>
-        <ul class = "nav-links">
-            <li><a href = "login.html" class ="log2">Log Out</a></li>
-        </ul>
-    </div>
+    <h1>Admin Page - Bookings</h1>
     <table id="bookingTable">
         <thead>
             <tr>
@@ -63,6 +42,7 @@
                 <th>Event</th>
                 <th>Start time</th>
                 <th>End time</th>
+                <th>Duration</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -87,6 +67,7 @@
                         <td>${booking.eventName}</td>
                         <td>${booking.startTime}</td>
                         <td>${booking.endTime}</td>
+                        <td>${booking.duration}</td>
                         <td>
                             <button class="accept-btn" data-index="${index}">Accept</button>
                             <button class="reject-btn" data-index="${index}">Reject</button>
@@ -106,10 +87,27 @@
                     // Handle accept action here
                     // For now, let's just log the index of the accepted booking
                     console.log("Accepted booking at index:", index);
-                    bookings[index].accepted = true; // Mark the booking as accepted
+                    // Update the booking object to mark it as accepted
+                    bookings[index].accepted = true;
                     localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
-                    // After the admin accepts the booking, navigate to calendar.html
-                    window.location.href = 'calendar.html';
+                    createBookingRows(); // Update the table with the new booking data
+
+                    // After the admin accepts the booking, you can update the color of the calendar
+                    const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
+                    const duration = bookings[index].duration;
+                    switch (duration) {
+                        case 'Full day':
+                            dateCell.style.backgroundColor = 'green';
+                            break;
+                        case 'Morning':
+                            dateCell.style.backgroundColor = 'blue';
+                            break;
+                        case 'Afternoon':
+                            dateCell.style.backgroundColor = 'aqua';
+                            break;
+                        default:
+                            break;
+                    }
                 } else if (event.target.classList.contains('reject-btn')) {
                     const index = parseInt(event.target.getAttribute('data-index'));
                     bookings.splice(index, 1); // Remove the rejected booking from the array
@@ -118,12 +116,6 @@
                 }
             });
         });
-
-        document.querySelector('.log2').addEventListener('click',function(){
-            localStorage.removeItem('isLogin');
-            window.location.href = "index.html";
-            window.location.reload();
-        })
     </script>
 </body>
 </html>
