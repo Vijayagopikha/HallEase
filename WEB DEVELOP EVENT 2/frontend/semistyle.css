@@ -40,6 +40,7 @@ body{
     font-weight:bold;
     left:50px;
 }
+
 #next{
     left:unset;
     right:50px;
@@ -67,6 +68,6 @@ body{
     background-color: #0056b3; 
 }
 
-div a {
+diva {
     text-decoration: none;
 }
