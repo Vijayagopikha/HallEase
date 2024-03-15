@@ -57,7 +57,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Retrieve bookings from local storage
             const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-
+    
             // Get date cells and set background color based on booking duration
             const dateCells = document.querySelectorAll('.days li');
             bookings.forEach(booking => {

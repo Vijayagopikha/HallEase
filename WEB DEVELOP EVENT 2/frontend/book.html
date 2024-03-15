@@ -129,6 +129,7 @@
                     endTime: endTime,
                     duration: duration
                 };
+                
 
                 // Store the booking data in local storage
                 let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
@@ -139,7 +140,7 @@
                 alert('Booking registered successfully!');
 
                 // Navigate to the calendar page after registration
-                window.location.href = 'semi.html';
+                window.location.href = 'calendar.html';
             });
         });
     </script>

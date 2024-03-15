@@ -74,23 +74,6 @@
                         </td>
                     `;
                     tableBody.appendChild(newRow);
-
-                    // Apply color to the corresponding date based on duration
-                    const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
-                    const duration = booking.duration;
-                    switch (duration) {
-                        case 'Full day':
-                            dateCell.style.backgroundColor = 'green';
-                            break;
-                        case 'Morning':
-                            dateCell.style.backgroundColor = 'orange';
-                            break;
-                        case 'Afternoon':
-                            dateCell.style.backgroundColor = 'yellow';
-                            break;
-                        default:
-                            break;
-                    }
                 });
             }
 
@@ -104,7 +87,12 @@
                     // Handle accept action here
                     // For now, let's just log the index of the accepted booking
                     console.log("Accepted booking at index:", index);
-                    // After the admin accepts the booking, you can update the color of the date cell
+                    // Update the booking object to mark it as accepted
+                    bookings[index].accepted = true;
+                    localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
+                    createBookingRows(); // Update the table with the new booking data
+
+                    // After the admin accepts the booking, you can update the color of the calendar
                     const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
                     const duration = bookings[index].duration;
                     switch (duration) {
