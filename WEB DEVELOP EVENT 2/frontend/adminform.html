@@ -42,7 +42,6 @@
                 <th>Event</th>
                 <th>Start time</th>
                 <th>End time</th>
-                <th>Duration</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -67,30 +66,12 @@
                         <td>${booking.eventName}</td>
                         <td>${booking.startTime}</td>
                         <td>${booking.endTime}</td>
-                        <td>${booking.duration}</td>
                         <td>
                             <button class="accept-btn" data-index="${index}">Accept</button>
                             <button class="reject-btn" data-index="${index}">Reject</button>
                         </td>
                     `;
                     tableBody.appendChild(newRow);
-
-                    // Apply color to the corresponding date based on duration
-                    const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
-                    const duration = booking.duration;
-                    switch (duration) {
-                        case 'Full day':
-                            dateCell.style.backgroundColor = 'green';
-                            break;
-                        case 'Morning':
-                            dateCell.style.backgroundColor = 'orange';
-                            break;
-                        case 'Afternoon':
-                            dateCell.style.backgroundColor = 'yellow';
-                            break;
-                        default:
-                            break;
-                    }
                 });
             }
 
@@ -104,22 +85,10 @@
                     // Handle accept action here
                     // For now, let's just log the index of the accepted booking
                     console.log("Accepted booking at index:", index);
-                    // After the admin accepts the booking, you can update the color of the date cell
-                    const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
-                    const duration = bookings[index].duration;
-                    switch (duration) {
-                        case 'Full day':
-                            dateCell.style.backgroundColor = 'green';
-                            break;
-                        case 'Morning':
-                            dateCell.style.backgroundColor = 'blue';
-                            break;
-                        case 'Afternoon':
-                            dateCell.style.backgroundColor = 'aqua';
-                            break;
-                        default:
-                            break;
-                    }
+                    bookings[index].accepted = true; // Mark the booking as accepted
+                    localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
+                    // After the admin accepts the booking, navigate to calendar.html
+                    window.location.href = 'calendar.html';
                 } else if (event.target.classList.contains('reject-btn')) {
                     const index = parseInt(event.target.getAttribute('data-index'));
                     bookings.splice(index, 1); // Remove the rejected booking from the array
