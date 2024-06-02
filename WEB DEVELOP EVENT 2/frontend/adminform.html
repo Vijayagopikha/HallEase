@@ -42,7 +42,9 @@
                 <th>Event</th>
                 <th>Start time</th>
                 <th>End time</th>
+
                 <th>Duration</th>
+
                 <th>Actions</th>
             </tr>
         </thead>
@@ -87,6 +89,7 @@
                     // Handle accept action here
                     // For now, let's just log the index of the accepted booking
                     console.log("Accepted booking at index:", index);
+
                     // Update the booking object to mark it as accepted
                     bookings[index].accepted = true;
                     localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
@@ -96,18 +99,30 @@
                     const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
                     const duration = bookings[index].duration;
                     switch (duration) {
+
+                    // After the admin accepts the booking, you can update the color of the date cell
+                    const date = new Date(bookings[index].eventDate);
+                    const dayIndex = date.getDay();
+                    let color;
+                    switch (bookings[index].duration) {
+
                         case 'Full day':
-                            dateCell.style.backgroundColor = 'green';
+                            color = 'green';
                             break;
                         case 'Morning':
-                            dateCell.style.backgroundColor = 'blue';
+                            color = 'blue';
                             break;
                         case 'Afternoon':
-                            dateCell.style.backgroundColor = 'aqua';
+                            color = 'aqua';
                             break;
                         default:
+                            color = '';
                             break;
                     }
+                    const dateCells = document.querySelectorAll('.days li');
+                    dateCells[dayIndex].style.backgroundColor = color;
+                    bookings[index].accepted = true; // Mark the booking as accepted
+                    localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
                 } else if (event.target.classList.contains('reject-btn')) {
                     const index = parseInt(event.target.getAttribute('data-index'));
                     bookings.splice(index, 1); // Remove the rejected booking from the array
