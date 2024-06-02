@@ -10,7 +10,7 @@ body{
     align-items:center;
     justify-content:center;
     min-height:100vh;
-    background: #9b59b6;
+    background: rgb(209, 204, 204);
 }
 
 .wrapper{
@@ -111,29 +111,29 @@ background: rgb(236, 243, 173);
 }
 
 .days li.active::before{
-    background: #9b59b6
+    background: #1f1a21
     ;
 }
 
 .column {
     display: flex;
-    
+
 }
 .column .details{
     position: relative;
-    margin-top:10rem;
+    margin-top:1rem;
     left:20%;
 }
 
 .column div{
-    margin:15px 0.5px;
+    margin:5px 0.5px;
     
 }
 
 .column button{
     margin:7px 4px;
-    width:2rem;
-    height: 1rem;
+    width:250px; 
+    height: 30px;
     border-radius: 40px;
 }
 .column p{
@@ -141,3 +141,4 @@ background: rgb(236, 243, 173);
     margin-top:1.5px;
     margin-left: 6px;
 }
+
