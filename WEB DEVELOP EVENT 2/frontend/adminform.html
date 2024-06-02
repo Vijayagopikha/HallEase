@@ -98,6 +98,7 @@
                     // After the admin accepts the booking, you can update the color of the calendar
                     const dateCell = document.querySelectorAll('#bookingTable tbody tr td:first-child')[index];
                     const duration = bookings[index].duration;
+                
                     switch (duration) {
 
                     // After the admin accepts the booking, you can update the color of the date cell
@@ -120,6 +121,7 @@
                             break;
                     }
                     const dateCells = document.querySelectorAll('.days li');
+                    
                     dateCells[dayIndex].style.backgroundColor = color;
                     bookings[index].accepted = true; // Mark the booking as accepted
                     localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
@@ -129,8 +131,10 @@
                     localStorage.setItem('bookings', JSON.stringify(bookings)); // Update local storage
                     createBookingRows(); // Update the table with the new booking data
                 }
+            
             });
         });
+    
     </script>
 </body>
 </html>
