@@ -1,7 +1,18 @@
-# HallEase
+# Seminar Hall Booking System 🏛️
 
-A web-based app to streamline seminar hall reservations across multiple departments. Users can view all halls, filter by department, and check availability via a calendar interface showing each hall’s status as booked, waiting, or available. Users can request bookings, and admins manage approvals, ensuring an organized booking process.
+This website provides an efficient platform for booking seminar halls through an interactive calendar interface. Users can easily check availability, view existing bookings, and reserve specific time slots with just a few clicks.
 
-### Tech Stack
-- **Backend**: Node.js, MongoDB
-- **Frontend**: HTML, CSS, JavaScript
+## 🌟 Features
+
+- 📅 **Interactive Calendar Interface:** View hall availability and bookings on a daily basis with specific time slots.
+- 🏢 **Hall Details & Availability:** Get a clear visual of reserved and open halls in real-time.
+- 🔍 **User-Friendly Design:** Simple and intuitive layout for easy navigation and quick scheduling.
+- 📨 **Booking Requests:** Users can send reservation requests based on available slots.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** HTML / CSS / JavaScript 
+- **Backend:** Node.js
+- **Database:** MongoDB 
+
+
